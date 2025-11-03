@@ -1,0 +1,41 @@
+# Node dependencies
+node_modules/
+package-lock.json
+
+# Reports & screenshots
+reports/
+screenshots/
+*.png
+*.jpg
+
+# Logs
+logs/
+*.log
+
+# Environment files
+.env
+.env.*
+
+# VS Code
+.vscode/
+.history/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build & temp
+dist/
+tmp/
+temp/
+out/
+coverage/
+
+# Selenium / ChromeDriver binaries
+chromedriver.exe
+chromedriver.log
+
+# Cucumber JSON / HTML outputs
+*.json
+*.html
