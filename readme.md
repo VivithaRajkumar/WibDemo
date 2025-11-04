@@ -56,6 +56,8 @@ npx cucumber-js --format html:reports/simple-report.htm
 After the test run completes, the HTML report will be available at:
 
 reports/simple-report.html
+<img width="1334" height="1015" alt="image" src="https://github.com/user-attachments/assets/8287c474-bf6b-4184-96c5-f0472a984208" />
+
 
 
 Open it in any browser to view the results.
