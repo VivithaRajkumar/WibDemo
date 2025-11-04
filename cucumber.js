@@ -7,10 +7,11 @@ const __dirname = path.dirname(__filename);
 
 export default {
   default: `--require ${__dirname}/features/step_definitions/**/*.js \
+  
 --require ${__dirname}/hooks/**/*.js \
---format progress \
---format json:reports/cucumber-report.json
---format json:${path.resolve(__dirname, '../reports/cucumber_report.json')} \
+
+--format: ['json:reports/results.json', 'progress'], \
 --publish-quiet \
 --timeout 60000`
+
 };

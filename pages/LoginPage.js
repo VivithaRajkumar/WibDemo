@@ -25,7 +25,6 @@ export default class LoginPage {
     await passwordField.clear();
     await passwordField.sendKeys(userData.password);
     await loginButton.click();
-
     await driver.wait(until.elementLocated(By.linkText("My account")), 10000);
   }
 

@@ -43,10 +43,10 @@ export default class CartPage {
     const totalEl = await this.driver.findElement(By.css('.cart-total-right'));
     return await totalEl.getText();
   }
- async getCartItemNames() {
+  async getCartItemNames() {
     await this.driver.wait(until.elementsLocated(By.css('td.product a')), 10000);
     const items = await this.driver.findElements(By.css('td.product a'));
-     const names = [];
+    const names = [];
     for (let item of items) {
       names.push(await item.getText());
     }
@@ -54,20 +54,20 @@ export default class CartPage {
   }
 
   async acceptTerms() {
-  const termsCheckbox = await this.driver.wait(
-    until.elementLocated({ id: 'termsofservice' }),
-    10000
-  );
+    const termsCheckbox = await this.driver.wait(
+      until.elementLocated({ id: 'termsofservice' }),
+      10000
+    );
 
-  await this.driver.wait(until.elementIsVisible(termsCheckbox), 5000);
+    await this.driver.wait(until.elementIsVisible(termsCheckbox), 5000);
 
-  const isChecked = await termsCheckbox.isSelected();
-  if (!isChecked) {
-    // Scroll into view and click using JS to avoid interception
-    await this.driver.executeScript('arguments[0].scrollIntoView(true);', termsCheckbox);
-    await this.driver.executeScript('arguments[0].click();', termsCheckbox);
+    const isChecked = await termsCheckbox.isSelected();
+    if (!isChecked) {
+      // Scroll into view and click using JS to avoid interception
+      await this.driver.executeScript('arguments[0].scrollIntoView(true);', termsCheckbox);
+      await this.driver.executeScript('arguments[0].click();', termsCheckbox);
+    }
   }
-}
 
 
   async proceedToCheckout() {

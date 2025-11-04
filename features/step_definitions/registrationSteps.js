@@ -15,7 +15,7 @@ When("I complete the registration form", async function () {
     "demo001@example.com",
     "welcome@123"
   );
- // await registrationPage.submit();
+ await registrationPage.submit();
 });
 
 Then("I should see a successful registration message", async function () {

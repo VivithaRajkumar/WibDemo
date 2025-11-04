@@ -17,11 +17,7 @@ BeforeAll(async function () {
     .build();
 });
 
-AfterAll(async function () {
-  if (sharedDriver) {
-    await sharedDriver.quit();
-  }
-});
+
 
 Before(function () {
   this.driver = sharedDriver;
@@ -40,13 +36,13 @@ After(async function (scenario) {
       const screenshotPath = path.join("screenshots", `FAILED_${Date.now()}.png`);
       fs.mkdirSync("screenshots", { recursive: true });
       fs.writeFileSync(screenshotPath, data, "base64");
-      console.log(`📸 Full-page screenshot saved to: ${screenshotPath}`);
+      console.log(` Full-page screenshot saved to: ${screenshotPath}`);
 
       // Log current URL for debugging
       const currentUrl = await this.driver.getCurrentUrl();
-      console.log(`🔗 URL at failure: ${currentUrl}`);
+      console.log(` URL at failure: ${currentUrl}`);
     } catch (error) {
-      console.error("❌ Failed to capture full-page screenshot:", error);
+      console.error(" Failed to capture full-page screenshot:", error);
     }
   }
 });

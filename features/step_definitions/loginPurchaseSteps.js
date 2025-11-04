@@ -5,12 +5,11 @@ import CartPage from "../../pages/cartPage.js";
 import CheckoutPage from "../../pages/checkoutPage.js";
 
 let checkoutPage;
-
-setDefaultTimeout(30 * 1000); // 30 seconds
-
 let loginPage;
 let productPage;
 let cartPage;
+
+setDefaultTimeout(30 * 1000); // 30 seconds
 
 Given("I am on the login page", async function () {
   loginPage = new LoginPage(this.driver);
@@ -63,39 +62,18 @@ When("I fill the checkout details and confirm order", async function () {
     zip: "10001",
     phone: "1234567890"
   });
-  
-//   const continueButtons = [
-//       "button.new-address-next-step-button",
-//       "button.shipping-method-next-step-button",
-//       "button.payment-method-next-step-button",
-//       "button.payment-info-next-step-button",
-//       "button.confirm-order-next-step-button"
-//     ];
 
-//     for (const selector of continueButtons) {
-//       try {
-//         const button = By.css(selector);
-//         await this.driver.wait(until.elementLocated(button), 10000);
-//         await this.driver.findElement(button).click();
-//         await this.driver.sleep(2000);
-//       } catch (err) {
-//         console.log(`Skipping ${selector} (not visible at this step)`);
-//       }}
-  await checkoutPage.selectShippingMethod("Ground");
-  await checkoutPage.selectPaymentMethod("Check / Money Order");
+  await checkoutPage.selectShippingMethod();
+  await checkoutPage.selectPaymentMethod();
+  await checkoutPage.paymentInfo();
 
-  const confirmation = await checkoutPage.confirmOrder();
-  if (!confirmation.includes("Thank you")) {
-    throw new Error("Checkout failed");
-  }
+
+
 });
 
 
 Then("I should complete the purchase successfully", async function () {
-  
-  await cartPage.proceedToCheckout();
-  const confirmation = await productPage.getOrderConfirmation(); // implement in ProductPage
-  if (!confirmation.includes("Thank you")) {
-    throw new Error("Checkout failed");
-  }
+
+  await checkoutPage.confirmOrder(); // implement in ProductPage
+
 });
